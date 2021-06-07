@@ -1,0 +1,35 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+<div class="container" style="border: black solid 2px;">
+    <div class="row">
+        <div class="col-md-3 offset-md-5"><h1>LOGIN</h1></div>
+        <div class="col-md-4"><a  style="color: black;margin-right: 2px;text-decoration: none;" [routerLink]="'/signup'">SIGNUP</a><fa-icon [icon]="['fas','sign-out-alt']"></fa-icon>  </div>
+    </div>
+    <div class="row">
+        <div class="col-md-7 offset-md-5" >
+            <fa-icon [icon]="['fas','user']"></fa-icon>
+            <input type="text" id="name" placeholder="username" [(ngModel)]="username" style="border:4px solid orangered ;margin: 10px;" />
+        </div>
+        <div class="col-md-7 offset-md-5" >
+            <fa-icon [icon]="['fas','lock']"></fa-icon>
+            <input type="text" id="name" placeholder="password" [(ngModel)]="password" style="border:4px solid orangered ;margin: 10px;" />
+        </div>
+        <div class=" btn-group col-md- 7 offset-md-5" style="margin-bottom: 5px;" role="group">
+            <button (click)="submit()" style="margin-left:15px;margin-right: 20px;background-color: limegreen; border-radius: 8px;">LOGIN<fa-icon [icon]="['fas','sign-in-alt']"></fa-icon></button>
+            <button (click)="reset()" style="margin-right: 5px;background-color:pink ; border-radius: 8px;">RESET<fa-icon [icon]="['fas','window-restore']"></fa-icon></button>
+        </div>
+        <div class="col-md-7 offset-md-5" >
+            <div *ngIf="isValidUser" style="color: rgb(8, 241, 8);">
+                <b>
+                <fa-icon [icon]="['fas','check-circle']"></fa-icon>User logged in successfully!
+            </b><span><button  class="btn btn-outline-success" style="padding: 1px;"><a class="b" [routerLink]="'/todo/'+user"><b>continue</b></a></button></span></div>
+            
+        </div>
+        <div class="col-md-7 offset-md-5" >
+            <div *ngIf="ri" style="color: red;"> <b><fa-icon [icon]="['fas','exclamation-triangle']"></fa-icon>login  unsuccessful .Reset and Sign up!</b></div>
+        </div>
+    </div>
+    
+
+</div>
+
