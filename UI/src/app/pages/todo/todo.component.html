@@ -15,14 +15,11 @@
         </div>
       
     </div>
-    <div class='row'>
-        <div class="col-md-4"> <button (click)="show()"class="btn btn-primary"b style="display:none;">Show todos</button></div>
-       
-    </div>
+    
     <div class="row">
         <div *ngFor="let i of todolist" class="col-md-12"  style="margin-bottom: 5px;">
             <fa-icon style="color: purple;margin-right: 2px;" [icon]="['fas','star']"></fa-icon><span style="background-color: yellowgreen;padding: 6px;border-radius: 4px;">{{i}}</span>
-            <span><button class="add btn btn-danger" (click)="remove('lol')"  ><fa-icon style="color: black;" [icon]="['fas','minus']"></fa-icon></button></span>
+            <span><button class="add btn btn-danger" (click)="remove(i)"  ><fa-icon style="color: black;" [icon]="['fas','minus']"></fa-icon></button></span>
         
         </div>
        

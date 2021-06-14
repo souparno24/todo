@@ -32,15 +32,27 @@ module.exports = {
         }
        })
       if(dbResult)
-      res.send('todo added')
+      res.send(dbResult.items)
       else
       res.send('db error')
         },
     fetch:  async (req,res)=>{
-        let result= await listModel.find({createdBy:req.query.userid},{"items":1,"_id":0})
+        let result= await listModel.findOne({createdBy:req.query.userid})
 
-        res.json(result[0].items)
+        res.json(result.items)
 
+    },
+    remove: async(req,res)=>{
+        let result= await listModel.findOne({createdBy:req.query.userid})
+        result.items =   result.items.filter(
+            (e) => e!== req.query.item
+          );
+ 
+          await result.save();
+          if(result)
+          res.send(result.items)
+          else
+          res.send('db error')
     }
-
-}
+   
+} 

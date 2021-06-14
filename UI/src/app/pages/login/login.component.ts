@@ -11,12 +11,14 @@ export class LoginComponent implements OnInit {
   username: string = ''
   password: string = ''
   isValidUser: boolean = false
-  ri:boolean=false
+ 
   user:string=''
 
   constructor(
     private login: LoginService
-  ) { }
+  ) {
+   
+   }
 
   ngOnInit(): void {
   }
@@ -25,7 +27,7 @@ export class LoginComponent implements OnInit {
     this.username = ''
     this.password = ''
     this.isValidUser = false
-    this.ri=false
+   
     this.user=''
   }
 
@@ -36,8 +38,7 @@ export class LoginComponent implements OnInit {
       this.user=r.dbdata[0].userId
      
     })
-    if(this.isValidUser==false)
-    this.ri=true
+  
   
     
   }

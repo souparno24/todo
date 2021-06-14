@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { LoginService } from 'src/app/shared/services/login.service';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
@@ -24,39 +24,52 @@ export class TodoComponent implements OnInit {
   ngOnInit(): void {
      
     let id=this.route.snapshot.params.id;
-    this.todolist=this.http.get('http://localhost:5000/list/fetch?userid='+id)
-   
-  }
+    this.http.get('http://localhost:5000/list/fetch?userid='+id).subscribe((r:any)=>{
+      
+      this.todolist=r
+    })
+}
+
+ 
 
 
   add(a:string){
     let id=this.route.snapshot.params.id;
     if(a!=''){
      this.login.addtodo(a,id).subscribe((r:any)=>{
-       console.log('done');
-       
+        
+      this.http.get('http://localhost:5000/list/fetch?userid='+id).subscribe((r:any)=>{
+      
+        this.todolist=r
+      })
+        
+     
      })
+  
+     
       
     }
+   
+
     
     this.todos=''
     
 
   }
-  show(){
-    let id=this.route.snapshot.params.id;
-   
-     this.login.showtodo(id).subscribe((r:any)=>{
-
-   
-    
-      } )
-  }
+ 
  
 
   remove(s:string){
-   
-
+    let id=this.route.snapshot.params.id;
+    this.login.removetodo(id,s).subscribe((r:any)=>{
+      this.http.get('http://localhost:5000/list/fetch?userid='+id).subscribe((r:any)=>{
+      
+        this.todolist=r
+      })
+        
+      
+      })
+        
   }
 
 }

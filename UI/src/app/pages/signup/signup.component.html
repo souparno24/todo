@@ -29,7 +29,11 @@
         <div *ngIf="signedin" style="color: rgb(8, 241, 8);">
             <b>
             <fa-icon [icon]="['fas','check-circle']"></fa-icon>User signedup successfully!
-        </b><span><button  (click)="activeuser(user)"class="btn btn-outline-success" style="padding: 1px;"><a class="b" [routerLink]="'/todo/'+user"><b>continue</b></a></button></span></div>
+        </b><span><button  (click)="activeuser(user)" class="btn btn-outline-success" style="padding: 1px;"><a class="b" [routerLink]="'/todo/'+user"><b>continue</b>
+        </a>
+        </button>
+        </span>
+    </div>
         
     </div>
   
